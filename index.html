@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>СОКПБ.Справочник IP-телефонов</title>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</head>
+
+<body class="bkg_style">
+
+   
+  
+    <!---------------------Блок поиска---------------------->
+
+    <header class="header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
+                    <h2>
+                        <a href="#">
+                            <img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">
+                            ГБУЗ СО "СОКПБ" Справочник IP-телефонов
+                        </a>
+                    </h2>
+
+                    <div class="input-group">
+                        <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по Ф.И.О / Должности / Подразделению">
+                        <div class="input-group-append">
+
+                        <button type="button" class="btn btn-primary border border-dark" style="color: #FFFAFA" id="FindBtn">&nbspНайти&nbsp</button>
+
+                        <button class="btn btn-primary border border-dark dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <a class="dropdown-item" href="#">На главную</a>
+                                <a class="dropdown-item" href="#">О проекте</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <!---------------------Таблица телефонов---------------------->
+
+    <main class="container shadow p-3 mb-5 bg-white rounded">
+        <div class="row justify-content-center container_style">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover table__style">
+                    <thead class="thead_style">
+                        <tr>
+                            <th>Ф.И.О</th>
+                            <th>Должность</th>
+                            <th>Внутренний тел.</th>
+                            <th>Городской тел.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="th_style" colspan="4">Отдел програмного обеспечения (ОПО)</th>
+                        </tr>
+                        <tr>
+                            <td>Иванов Иван Иванович</td>
+                            <td>Программист</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Пионтковский Алексей Алексеевич</td>
+                            <td>Программист</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                        
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                        <tr>
+                            <td>ФИО</td>
+                            <td>text</td>
+                            <td>text</td>
+                            <td>text</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            $('.has-clear input[type="text"]').on('input propertychange', function() {
+                var $this = $(this);
+                var visible = Boolean($this.val());
+                $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
+            }).trigger('propertychange');
+
+            $('.form-control-clear').click(function() {
+                $(this).siblings('input[type="text"]').val('')
+                    .trigger('propertychange').focus();
+            });
+            var table = $('#MainTable').DataTable({
+                language: {
+                    processing: "Подождите...",
+                    search: "Поиск по ФИО:",
+                    lengthMenu: "Показать _MENU_ записей",
+                    info: "Записи с _START_ до _END_ из _TOTAL_ записей",
+                    infoEmpty: "Записи с 0 до 0 из 0 записей",
+                    infoFiltered: "(отфильтровано из _MAX_ записей)",
+                    infoPostFix: "",
+                    loadingRecords: "Загрузка записей...",
+                    zeroRecords: "Записи отсутствуют.",
+                    emptyTable: "В таблице отсутствуют данные",
+                    paginate: {
+                        first: "Первая",
+                        previous: "Предыдущая",
+                        next: "Следующая",
+                        last: "Последняя"
+                    },
+                    aria: {
+                        sortAscending: ": активировать для сортировки столбца по возрастанию",
+                        sortDescending: ": активировать для сортировки столбца по убыванию"
+                    },
+                    buttons: {
+                        pageLength: "Отображать записей: %d",
+                        print: 'Распечатать'
+                    }
+                },
+                fixedHeader: true,
+                paging: false,
+                dom: "<'row'<'col-sm-3'l><'col-sm-3'>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                responsive: true,
+                select: false,
+                processing: true,
+                ordering: false,
+                ajax: {
+                    url: "functions.php",
+                    type: "POST",
+                    data: {
+                        action: "GetPhoneBook",
+                        fltr: function() {
+                            return $('#inputFltr').val();
+                        }
+                    }
+                },
+                columns: [{
+                        data: "fio"
+                    },
+                    {
+                        data: "departm"
+                    },
+                    {
+                        data: "dolzhn"
+                    },
+                    {
+                        data: "ipphone"
+                    }
+                ],
+                columnDefs: [{
+                        targets: 0,
+                        width: "30%"
+                    },
+                    {
+                        targets: [1, 2],
+                        width: "30%"
+                    },
+                    {
+                        targets: 3,
+                        width: "10%"
+                    },
+                    {
+                        targets: 3,
+                        className: "text-center"
+                    }
+                ]
+            });
+            $("#inputFltr").keypress(function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    table.ajax.reload();
+                }
+            });
+            $("#FindBtn").click(function(e) {
+                table.ajax.reload();
+            });
+        });
+
+    </script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
+</body>
+
+</html>
