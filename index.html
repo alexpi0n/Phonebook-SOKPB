@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-</head>
+    <script src="js/popper.min.js"></script>
+    <script src="js/popper.js"></script>
 
 <body class="bkg_style">
 
@@ -17,18 +17,14 @@
   
     <!---------------------Блок поиска---------------------->
 
-    <header class="header">
+    <div class="header-img header-img_style">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row row-search_style justify-content-center">
                 <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
-                    <h2>
-                        <a href="#">
-                            <img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">
-                            ГБУЗ СО "СОКПБ" Справочник IP-телефонов
-                        </a>
-                    </h2>
+                     <h2><a class="color no-underline" href="https://10.3.0.150/phonebook2/"><img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник IP-телефонов</a></h2>
 
-                    <div class="input-group">
+
+                    <div class="input-group input-group_padding">
                         <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по Ф.И.О / Должности / Подразделению">
                         <div class="input-group-append">
 
@@ -44,12 +40,12 @@
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
     
     <!---------------------Таблица телефонов---------------------->
 
-    <main class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="container shadow p-3 mb-5 bg-white rounded">
         <div class="row justify-content-center container_style">
             <div class="col-md-12">
                 <table class="table table-bordered table-hover table__style">
@@ -63,67 +59,96 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="th_style" colspan="4">Отдел програмного обеспечения (ОПО)</th>
+                            <th class="th_style" colspan="4">Структурное подразделение #1</th>
                         </tr>
                         <tr>
-                            <td>Иванов Иван Иванович</td>
-                            <td>Программист</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
                             <td>5-385</td>
                             <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>Пионтковский Алексей Алексеевич</td>
-                            <td>Программист</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
                             <td>5-187</td>
                             <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
-                        </tr>
-                        
-                        <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение</th>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
                         </tr>
                         
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <th class="th_style" colspan="4">Структурное подразделение #2</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #3</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </main>
-
+    </div>
+    
     <script>
         $(document).ready(function() {
             $('.has-clear input[type="text"]').on('input propertychange', function() {
