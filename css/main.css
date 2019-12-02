@@ -1,74 +1,96 @@
 body {
     overflow-x: hidden;
+    background-image: url(../img/snow.png);
 }
-
-.bkg_style {
-    background-color: #FFFAFA;
-}
-
-.container_style {
-    background-color: #FFFFFF;
-    padding: 0px;
-
-}
-
-h2 {
-    color: #191970;
-}
-
-.header {
+header.style {
     margin: 0 auto;
     height: 190px;
-    background-image: url(../img/744.png);
-    background-color: #FFFAFA;
-    font-family: 'Verdana';
+    background-image: url(../img/header-img.png);
+    background-color: rgba(0, 0, 0, 0);
     background-repeat:no-repeat;
     background-position: center;
+    font-family: 'Verdana';
 }
-
-.header .row {
-    padding-top: 30px;
+.title-color {
+    color: #191970;
 }
-
-.header .input-group {
+.no-underline:hover {
+    text-decoration: none;
+}
+.input-group {
     padding-top: 20px;
 }
-	
-
-.table__style {
+.search {
+    padding-top: 30px;
+}
+table.style {
     font-family: 'Verdana';
 }
-
-.thead_style {
-    background-color: #4169E1;
-    font-family: 'Verdana';
-    color: aliceblue;
+thead.style {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
 }
-
-.th_style {
+th.style {
     background-color: #E0FFFF;
     font-family: 'Verdana';
     color: #191970;
 }
-
- tbody {
-    display:block;
-    max-height:500px;
-    overflow-y:auto;
-         
+.calendar {
+    width:465px;
+    height: 360px;
+    border:1px solid #c0c0c0;
+    padding: 10px;
 }
-thead, tbody tr {
-    display:table;
-    width:100%;
-    table-layout:fixed;
+#calendar {
+    width: 100%;
+    font: monospace;
+    font-size: 30px;
+    text-align: center;
 }
-  
-thead {
-    width: calc( 100% - 1em )
-} 
-
-@media (min-width: 768px) {
-    .header {
-        background: : none;
-    }
+#calendar thead tr:last-child {
+    font-size: small;
+    color: rgb(85, 85, 85);
+}
+#calendar thead tr:nth-child(1) td:nth-child(2) {
+    color: rgb(50, 50, 50);
+}
+#calendar thead tr:nth-child(1) td:nth-child(1):hover, #calendar thead tr:nth-child(1) td:nth-child(3):hover {
+    cursor: pointer;
+}
+#calendar tbody td {
+    color: rgb(44, 86, 122);
+}
+#calendar tbody td:nth-child(n+6), #calendar .holiday {
+    color: rgb(231, 140, 92);
+}
+#calendar tbody td.today {
+    background: rgb(220, 0, 0);
+    color: #fff;
+}
+.anchor-top {
+    background-color: #007bff;
+    height: 30px;
+    border: 1px solid gainsboro;
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+}
+.anchor-color {
+    color: white;
+}
+.anchor-color:hover {
+    color: white;
+}
+.btn-color {
+    background-color: #DCDCDC !important;
+}
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.fixed.hidden {
+    display: none;
 }
