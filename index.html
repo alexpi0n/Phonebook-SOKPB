@@ -1,234 +1,486 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>СОКПБ.Справочник IP-телефонов</title>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function LoadTbody() {
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "functions.php",
+                    data: {
+                        action: 'GetPhoneBook',
+                        fltr: function () {
+                            return $('#inputFltr').val();
+                        }
+                    },
+                    success: function (data) {
+                        document.querySelector('#table_body').innerHTML = data;
+                    }
+                });
+            };
+            LoadTbody();
+
+            $('#FindBtn').on('click', function() {
+                LoadTbody();
+            });
+
+            $("#inputFltr").keypress(function (e) {
+                if (e.which == 13) {
+                    $('#FindBtn').click();
+                }
+            });
+        });
+    </script>
+
 </head>
 
-<body class="bkg_style">
+<body>
 
-   
-  
-    <!---------------------Блок поиска---------------------->
+<a id="top"></a>
 
-    <header class="header">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
-                    <h2>
-                        <a href="#">
-                            <img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">
-                            ГБУЗ СО "СОКПБ" Справочник IP-телефонов
-                        </a>
-                    </h2>
+<header class="style">
+    <div class="container">
+        <div class="row search justify-content-center">
+            <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
 
-                    <div class="input-group">
-                        <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по Ф.И.О / Должности / Подразделению">
-                        <div class="input-group-append">
+                <h2><a class="title-color no-underline" href="https://10.3.0.150/phonebook2" data-tooltip="tooltip" data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник IP-телефонов</a></h2>
 
-                        <button type="button" class="btn btn-primary border border-dark" style="color: #FFFAFA" id="FindBtn">&nbspНайти&nbsp</button>
+                <div class="input-group">
+                    <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по ФИО / Должности">
+                    <div class="input-group-append">
 
-                        <button class="btn btn-primary border border-dark dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="#">На главную</a>
-                                <a class="dropdown-item" href="#">О проекте</a>
+                        <button type="button" class="btn btn-primary border border-dark" id="FindBtn">&nbspНайти&nbsp</button>
+                        <form action="pb.docx" target="_blank">
+                            <button type="submit" class="btn btn-color border border-dark border-right-0 border-left-0 rounded-0" data-tooltip="tooltip" data-placement="top" title="Открыть или скачать справочник в MS Word">
+                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                        <button type="button" class="btn btn-color border border-dark rounded-right" data-toggle="modal" data-target="#exampleModal" data-tooltip="tooltip" data-placement="right" title="Календарь">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Календарь</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div align=center>
+                                            <div class="calendar">
+                                                <table id="calendar"  border="0" cellspacing="0" cellpadding="1">
+                                                    <thead>
+                                                    <tr><td><b>‹</b><td colspan="5"><td><b>›</b>
+                                                    <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    
-    <!---------------------Таблица телефонов---------------------->
-
-    <main class="container shadow p-3 mb-5 bg-white rounded">
-        <div class="row justify-content-center container_style">
-            <div class="col-md-12">
-                <table class="table table-bordered table-hover table__style">
-                    <thead class="thead_style">
-                        <tr>
-                            <th>Ф.И.О</th>
-                            <th>Должность</th>
-                            <th>Внутренний тел.</th>
-                            <th>Городской тел.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th class="th_style" colspan="4">Отдел програмного обеспечения (ОПО)</th>
+<main class="container shadow p-3 mb-5 bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover style">
+                <thead class="style text-center">
+                <tr>
+                    <th class="align-middle" width="37%">Ф.И.О</th>
+                    <th class="align-middle" width="40%">Должность</th>
+                    <th class="align-middle" width="10%">Внутр.тел</th>
+                    <th class="align-middle" width="13%">Гор.тел</th>
+                </tr>
+                </thead>
+                <tbody id="table_body">
+                    <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #1</th>
                         </tr>
                         <tr>
-                            <td>Иванов Иван Иванович</td>
-                            <td>Программист</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
                             <td>5-385</td>
                             <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>Пионтковский Алексей Алексеевич</td>
-                            <td>Программист</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
                             <td>5-187</td>
                             <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
                         </tr>
                         
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение</th>
+                            <th class="th_style" colspan="4">Структурное подразделение #2</th>
                         </tr>
                         
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
                         </tr>
                         <tr>
-                            <td>ФИО</td>
-                            <td>text</td>
-                            <td>text</td>
-                            <td>text</td>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
+                        
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #3</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #4</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #5</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #6</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #7</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #8</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #9</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                        <tr>
+                            <th class="th_style" colspan="4">Структурное подразделение #10</th>
+                        </tr>
+                        
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                </tbody>
+            </table>
         </div>
-    </main>
+    </div>
+</main>
 
-    <script>
-        $(document).ready(function() {
-            $('.has-clear input[type="text"]').on('input propertychange', function() {
-                var $this = $(this);
-                var visible = Boolean($this.val());
-                $this.siblings('.form-control-clear').toggleClass('hidden', !visible);
-            }).trigger('propertychange');
+<anchor class="container fixed hidden">
+    <div class="row justify-content-center">
+        <div class="col-md-3 anchor-top">
+            <a class="anchor-color no-underline" href="#top">В начало страницы</a>
+        </div>
+    </div>
+</anchor>
 
-            $('.form-control-clear').click(function() {
-                $(this).siblings('input[type="text"]').val('')
-                    .trigger('propertychange').focus();
-            });
-            var table = $('#MainTable').DataTable({
-                language: {
-                    processing: "Подождите...",
-                    search: "Поиск по ФИО:",
-                    lengthMenu: "Показать _MENU_ записей",
-                    info: "Записи с _START_ до _END_ из _TOTAL_ записей",
-                    infoEmpty: "Записи с 0 до 0 из 0 записей",
-                    infoFiltered: "(отфильтровано из _MAX_ записей)",
-                    infoPostFix: "",
-                    loadingRecords: "Загрузка записей...",
-                    zeroRecords: "Записи отсутствуют.",
-                    emptyTable: "В таблице отсутствуют данные",
-                    paginate: {
-                        first: "Первая",
-                        previous: "Предыдущая",
-                        next: "Следующая",
-                        last: "Последняя"
-                    },
-                    aria: {
-                        sortAscending: ": активировать для сортировки столбца по возрастанию",
-                        sortDescending: ": активировать для сортировки столбца по убыванию"
-                    },
-                    buttons: {
-                        pageLength: "Отображать записей: %d",
-                        print: 'Распечатать'
-                    }
-                },
-                fixedHeader: true,
-                paging: false,
-                dom: "<'row'<'col-sm-3'l><'col-sm-3'>>" +
-                    "<'row'<'col-sm-12'tr>>" +
-                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-                responsive: true,
-                select: false,
-                processing: true,
-                ordering: false,
-                ajax: {
-                    url: "functions.php",
-                    type: "POST",
-                    data: {
-                        action: "GetPhoneBook",
-                        fltr: function() {
-                            return $('#inputFltr').val();
-                        }
-                    }
-                },
-                columns: [{
-                        data: "fio"
-                    },
-                    {
-                        data: "departm"
-                    },
-                    {
-                        data: "dolzhn"
-                    },
-                    {
-                        data: "ipphone"
-                    }
-                ],
-                columnDefs: [{
-                        targets: 0,
-                        width: "30%"
-                    },
-                    {
-                        targets: [1, 2],
-                        width: "30%"
-                    },
-                    {
-                        targets: 3,
-                        width: "10%"
-                    },
-                    {
-                        targets: 3,
-                        className: "text-center"
-                    }
-                ]
-            });
-            $("#inputFltr").keypress(function(e) {
-                if (e.which == 13) {
-                    e.preventDefault();
-                    table.ajax.reload();
-                }
-            });
-            $("#FindBtn").click(function(e) {
-                table.ajax.reload();
-            });
-        });
+<script>
+    function calendar(id, year, month) {
+        var Dlast = new Date(year,month+1,0).getDate(),
+            D = new Date(year,month,Dlast),
+            DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+            DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+            calendar = '<tr>',
+            month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+        if (DNfirst != 0) {
+            for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+        }else{
+            for(var  i = 0; i < 6; i++) calendar += '<td>';
+        }
+        for(var  i = 1; i <= Dlast; i++) {
+            if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                calendar += '<td class="today">' + i;
+            }else{
+                calendar += '<td>' + i;
+            }
+            if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+                calendar += '<tr>';
+            }
+        }
+        for(var  i = DNlast; i < 7; i++) calendar += '<td> ';
+        document.querySelector('#'+id+' tbody').innerHTML = calendar;
+        document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+        if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
+        }
+    }
+    calendar("calendar", new Date().getFullYear(), new Date().getMonth());
+    // переключатель минус месяц
+    document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)-1);
+    }
+    // переключатель плюс месяц
+    document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
+    }
+</script>
+<script>
+    $("body").on('click', '[href*="#top"]', function(e){
+        var fixed_offset = 100;
+        $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
+        e.preventDefault();
+    });
+</script>
+<script>
+    $('[data-tooltip="tooltip"]').tooltip();
+</script>
+<script>
+    var $win = $(window),
+        $fixed = $(".fixed"),
+        limit = 300;
 
-    </script>
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    
+    function tgl (state) {
+        $fixed.toggleClass("hidden", state);
+    }
+
+    $win.on("scroll", function () {
+        var top = $win.scrollTop();
+
+        if (top < limit) {
+            tgl(true);
+        } else {
+            tgl(false);
+        }
+    });
+</script>
 
 </body>
-
 </html>
