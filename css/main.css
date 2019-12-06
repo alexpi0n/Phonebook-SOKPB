@@ -1,41 +1,50 @@
 body {
     background-image: url(../img/snow.png);
 }
+
 header.style {
     margin: 0 auto;
     height: 190px;
     background-image: url(../img/header-img.png);
     background-color: rgba(0, 0, 0, 0);
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-position: center;
     font-family: 'Verdana';
 }
+
 .title-color {
     color: #191970;
 }
+
 .no-underline:hover {
     text-decoration: none;
 }
+
 .input-group {
     padding-top: 20px;
 }
+
 .search {
     padding-top: 30px;
 }
+
 table.style {
     font-family: 'Verdana';
 }
+
 thead.style {
     background-color: #007bff;
     color: white;
     position: sticky;
     top: 0;
 }
+
 th.style {
     background-color: #E0FFFF;
     font-family: 'Verdana';
     color: #191970;
 }
+
 .anchor-top {
     background-color: #007bff;
     height: 30px;
@@ -62,24 +71,28 @@ th.style {
     -o-transition: all 0.2s ease-out;
     user-select: none;
     -moz-user-select: none;
-    
+
 }
 
 .anchor-color {
     color: white;
 }
+
 .anchor-color:hover {
     color: white;
 }
+
 .btn-color {
     background-color: #E0FFFF !important;
 }
+
 .fixed {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
 }
+
 .fixed.hidden {
     display: none;
 }
@@ -116,117 +129,21 @@ tr.dd-line:hover {
 }
 
 .btn:focus,
-.btn:active{
-    box-shadow:none !important;
-    outline:0px !important;
+.btn:active {
+    box-shadow: none !important;
+    outline: 0px !important;
 }
 
 input:focus,
-input:active{
-    box-shadow:none !important;
-    outline:0px !important;
+input:active {
+    box-shadow: none !important;
+    outline: 0px !important;
 }
 
 .fa-bars:hover {
     color: #007bff;
 }
+
 .fa-address-book-o:hover {
     color: #007bff;
-}s
-=======
-body {
-    overflow-x: hidden;
-    background-image: url(../img/snow.png);
-}
-header.style {
-    margin: 0 auto;
-    height: 190px;
-    background-image: url(../img/header-img.png);
-    background-color: rgba(0, 0, 0, 0);
-    background-repeat:no-repeat;
-    background-position: center;
-    font-family: 'Verdana';
-}
-.title-color {
-    color: #191970;
-}
-.no-underline:hover {
-    text-decoration: none;
-}
-.input-group {
-    padding-top: 20px;
-}
-.search {
-    padding-top: 30px;
-}
-table.style {
-    font-family: 'Verdana';
-}
-thead.style {
-    background-color: #007bff;
-    color: white;
-    position: sticky;
-    top: 0;
-}
-th.style {
-    background-color: #E0FFFF;
-    font-family: 'Verdana';
-    color: #191970;
-}
-.calendar {
-    width:465px;
-    height: 360px;
-    border:1px solid #c0c0c0;
-    padding: 10px;
-}
-#calendar {
-    width: 100%;
-    font: monospace;
-    font-size: 30px;
-    text-align: center;
-}
-#calendar thead tr:last-child {
-    font-size: small;
-    color: rgb(85, 85, 85);
-}
-#calendar thead tr:nth-child(1) td:nth-child(2) {
-    color: rgb(50, 50, 50);
-}
-#calendar thead tr:nth-child(1) td:nth-child(1):hover, #calendar thead tr:nth-child(1) td:nth-child(3):hover {
-    cursor: pointer;
-}
-#calendar tbody td {
-    color: rgb(44, 86, 122);
-}
-#calendar tbody td:nth-child(n+6), #calendar .holiday {
-    color: rgb(231, 140, 92);
-}
-#calendar tbody td.today {
-    background: rgb(220, 0, 0);
-    color: #fff;
-}
-.anchor-top {
-    background-color: #007bff;
-    height: 30px;
-    border: 1px solid gainsboro;
-    border-radius: 10px 10px 0px 0px;
-    text-align: center;
-}
-.anchor-color {
-    color: white;
-}
-.anchor-color:hover {
-    color: white;
-}
-.btn-color {
-    background-color: #DCDCDC !important;
-}
-.fixed {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-.fixed.hidden {
-    display: none;
 }
