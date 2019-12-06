@@ -10,38 +10,7 @@
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            function LoadTbody() {
-                $.ajax({
-                    type: "POST",
-                    cache: false,
-                    url: "functions.php",
-                    data: {
-                        action: 'GetPhoneBook',
-                        fltr: function () {
-                            return $('#inputFltr').val();
-                        }
-                    },
-                    success: function (data) {
-                        document.querySelector('#table_body').innerHTML = data;
-                    }
-                });
-            };
-            LoadTbody();
-
-            $('#FindBtn').on('click', function() {
-                LoadTbody();
-            });
-
-            $("#inputFltr").keypress(function (e) {
-                if (e.which == 13) {
-                    $('#FindBtn').click();
-                }
-            });
-        });
-    </script>
-
+    
 </head>
 
 <body>
@@ -51,50 +20,65 @@
 <header class="style">
     <div class="container">
         <div class="row search justify-content-center">
-            <div class="col-md-12 shadow p-3 mb-5 bg-white rounded">
+            <div class="col-12 shadow p-3 mb-5 bg-white rounded">
 
-                <h2><a class="title-color no-underline" href="https://10.3.0.150/phonebook2" data-tooltip="tooltip" data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник IP-телефонов</a></h2>
+                <h2><a class="title-color no-underline" href="index.html" data-tooltip="tooltip" data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник IP-телефонов</a></h2>
 
                 <div class="input-group">
                     <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по ФИО / Должности">
                     <div class="input-group-append">
-
-                        <button type="button" class="btn btn-primary border border-dark" id="FindBtn">&nbspНайти&nbsp</button>
-                        <form action="pb.docx" target="_blank">
-                            <button type="submit" class="btn btn-color border border-dark border-right-0 border-left-0 rounded-0" data-tooltip="tooltip" data-placement="top" title="Открыть или скачать справочник в MS Word">
-                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                        <button type="button" class="btn btn-color border border-dark rounded-right" data-toggle="modal" data-target="#exampleModal" data-tooltip="tooltip" data-placement="right" title="Календарь">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        
+                        <button type="button" class="btn btn-primary border border-dark" id="FindBtn">
+                                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                         </button>
-
-                        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Календарь</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div align=center>
-                                            <div class="calendar">
-                                                <table id="calendar"  border="0" cellspacing="0" cellpadding="1">
-                                                    <thead>
-                                                    <tr><td><b>‹</b><td colspan="5"><td><b>›</b>
-                                                    <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-                                                    </thead>
-                                                    <tbody></tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                            <a class="btn btn-color border border-dark border-right-0" href="pb.docx" role="button" target="_blank" data-tooltip="tooltip" data-placement="top" title="Открыть или скачать старый телефонный справочник">
+                                <i class="fa fa-address-book-o fa-lg" aria-hidden="true"></i>
+                            </a>
+                        
+                        <button type="button" class="btn btn-color border border-dark rounded-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-tooltip="tooltip" data-placement="top" title="Список подразделений. Выберете нужное для перехода">
+                                <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+                        </button>
+                            <div class="dropdown-menu shadow p-1 rounded">
+                                <div class="row justify-content-center sd-input-group">
+                                    <div class="input-group-append p-1 mt-n1 sd-input">
+                                        <input type="search" class="form-control rounded border border-dark" id="inputPodrFltr" placeholder="Поиск по подразделению">
                                     </div>
                                 </div>
+                                <table class="table">
+                                    <tbody id="podr_body">
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a1">Структурное подразделение #1</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a2">Структурное подразделение #2</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a3">Структурное подразделение #3</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a4">Структурное подразделение #4</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a5">Структурное подразделение #5</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a6">Структурное подразделение #6</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a7">Структурное подразделение #7</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a8">Структурное подразделение #8</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a9">Структурное подразделение #9</a></td>
+                                        </tr>
+                                        <tr class="dd-line">
+                                            <td><a class="sd-link no-underline" href="#a10">Структурное подразделение #10</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -102,9 +86,9 @@
     </div>
 </header>
 
-<main class="container shadow p-3 mb-5 bg-white">
+<main class="container shadow p-3 mb-5 bg-white rounded">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
             <table class="table table-bordered table-hover style">
                 <thead class="style text-center">
                 <tr>
@@ -114,9 +98,9 @@
                     <th class="align-middle" width="13%">Гор.тел</th>
                 </tr>
                 </thead>
-                <tbody id="table_body">
-                    <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #1</th>
+                <tbody>
+                        <tr>
+                            <th class="style" colspan="4"><a id="a1"></a>Структурное подразделение #1</th>
                         </tr>
                         <tr>
                             <td>Lorem ipsum dolor.</td>
@@ -144,7 +128,7 @@
                         </tr>
                         
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #2</th>
+                            <th class="style" colspan="4"><a id="a2"></a>Структурное подразделение #2</th>
                         </tr>
                         
                         <tr>
@@ -173,7 +157,7 @@
                         </tr>
                         
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #3</th>
+                            <th class="style" colspan="4"><a id="a3"></a>Структурное подразделение #3</th>
                         </tr>
                         
                         <tr>
@@ -201,7 +185,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #4</th>
+                            <th class="style" colspan="4"><a id="a4"></a>Структурное подразделение #4</th>
                         </tr>
                         
                         <tr>
@@ -229,7 +213,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #5</th>
+                            <th class="style" colspan="4"><a id="a5"></a>Структурное подразделение #5</th>
                         </tr>
                         
                         <tr>
@@ -257,7 +241,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #6</th>
+                            <th class="style" colspan="4"><a id="a6"></a>Структурное подразделение #6</th>
                         </tr>
                         
                         <tr>
@@ -285,7 +269,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #7</th>
+                            <th class="style" colspan="4"><a id="a7"></a>Структурное подразделение #7</th>
                         </tr>
                         
                         <tr>
@@ -313,7 +297,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #8</th>
+                            <th class="style" colspan="4"><a id="a8"></a>Структурное подразделение #8</th>
                         </tr>
                         
                         <tr>
@@ -341,7 +325,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #9</th>
+                            <th class="style" colspan="4"><a id="a9"></a>Структурное подразделение #9</th>
                         </tr>
                         
                         <tr>
@@ -369,7 +353,7 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="th_style" colspan="4">Структурное подразделение #10</th>
+                            <th class="style" colspan="4"><a id="a10"></a>Структурное подразделение #10</th>
                         </tr>
                         
                         <tr>
@@ -404,57 +388,22 @@
 
 <anchor class="container fixed hidden">
     <div class="row justify-content-center">
-        <div class="col-md-3 anchor-top">
+        <div class="col-3 anchor-top">
             <a class="anchor-color no-underline" href="#top">В начало страницы</a>
         </div>
     </div>
 </anchor>
 
 <script>
-    function calendar(id, year, month) {
-        var Dlast = new Date(year,month+1,0).getDate(),
-            D = new Date(year,month,Dlast),
-            DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
-            DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
-            calendar = '<tr>',
-            month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
-        if (DNfirst != 0) {
-            for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
-        }else{
-            for(var  i = 0; i < 6; i++) calendar += '<td>';
-        }
-        for(var  i = 1; i <= Dlast; i++) {
-            if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-                calendar += '<td class="today">' + i;
-            }else{
-                calendar += '<td>' + i;
-            }
-            if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
-                calendar += '<tr>';
-            }
-        }
-        for(var  i = DNlast; i < 7; i++) calendar += '<td> ';
-        document.querySelector('#'+id+' tbody').innerHTML = calendar;
-        document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
-        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
-        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
-        if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
-            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
-        }
-    }
-    calendar("calendar", new Date().getFullYear(), new Date().getMonth());
-    // переключатель минус месяц
-    document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
-        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)-1);
-    }
-    // переключатель плюс месяц
-    document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
-        calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
-    }
-</script>
-<script>
     $("body").on('click', '[href*="#top"]', function(e){
         var fixed_offset = 100;
+        $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
+        e.preventDefault();
+    });
+</script>
+<script>
+    $("body").on('click', '[href*="#a1"], [href*="#a2"], [href*="#a3"], [href*="#a4"], [href*="#a5"],[href*="#a6"], [href*="#a7"], [href*="#a8"], [href*="#a9"], [href*="#a10"]', function (e){
+        var fixed_offset = 5;
         $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
         e.preventDefault();
     });
