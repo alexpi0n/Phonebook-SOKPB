@@ -1,5 +1,4 @@
 body {
-    overflow-x: hidden;
     background-image: url(../img/snow.png);
 }
 header.style {
@@ -37,45 +36,35 @@ th.style {
     font-family: 'Verdana';
     color: #191970;
 }
-.calendar {
-    width:465px;
-    height: 360px;
-    border:1px solid #c0c0c0;
-    padding: 10px;
-}
-#calendar {
-    width: 100%;
-    font: monospace;
-    font-size: 30px;
-    text-align: center;
-}
-#calendar thead tr:last-child {
-    font-size: small;
-    color: rgb(85, 85, 85);
-}
-#calendar thead tr:nth-child(1) td:nth-child(2) {
-    color: rgb(50, 50, 50);
-}
-#calendar thead tr:nth-child(1) td:nth-child(1):hover, #calendar thead tr:nth-child(1) td:nth-child(3):hover {
-    cursor: pointer;
-}
-#calendar tbody td {
-    color: rgb(44, 86, 122);
-}
-#calendar tbody td:nth-child(n+6), #calendar .holiday {
-    color: rgb(231, 140, 92);
-}
-#calendar tbody td.today {
-    background: rgb(220, 0, 0);
-    color: #fff;
-}
 .anchor-top {
     background-color: #007bff;
     height: 30px;
-    border: 1px solid gainsboro;
+    border: 1px dashed #007bff;
     border-radius: 10px 10px 0px 0px;
     text-align: center;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    user-select: none;
+    -moz-user-select: none;
 }
+
+.anchor-top:hover {
+    background-color: #007bff;
+    height: 50px;
+    border: 1px dashed #007bff;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    user-select: none;
+    -moz-user-select: none;
+    
+}
+
 .anchor-color {
     color: white;
 }
@@ -83,7 +72,7 @@ th.style {
     color: white;
 }
 .btn-color {
-    background-color: #DCDCDC !important;
+    background-color: #E0FFFF !important;
 }
 .fixed {
     position: fixed;
@@ -94,3 +83,53 @@ th.style {
 .fixed.hidden {
     display: none;
 }
+
+.sd-link {
+    color: black;
+}
+
+.sd-link:hover {
+    color: #007bff;
+}
+
+.sd-input-group {
+    background-color: whitesmoke;
+    position: sticky;
+    top: 0;
+}
+
+.sd-input {
+    width: 94%;
+    background-color: white;
+}
+
+.dropdown-menu {
+    width: 400px;
+    height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid silver !important;
+}
+
+tr.dd-line:hover {
+    background-color: #ececec !important;
+}
+
+.btn:focus,
+.btn:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
+input:focus,
+input:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
+.fa-bars:hover {
+    color: #007bff;
+}
+.fa-address-book-o:hover {
+    color: #007bff;
+}s
