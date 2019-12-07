@@ -1,0 +1,89 @@
+$shared-font: Verdana, sans-serif;
+$primary-color: #007bff;
+$text-align_center: center;
+
+@import 'anchor';
+@import 'subdivision-menu';
+
+%seccondary-color {
+    background-color: #E0FFFF;
+}
+
+body {
+    background-image: url(../img/snow.png);
+    font-family: $shared-font;
+}
+
+header.style {
+    margin: 0 auto;
+    height: 190px;
+    background-image: url(../img/header-img.png);
+    background-color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title-color {
+    color: #191970;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.input-group {
+    padding-top: 20px;
+}
+
+.search {
+    padding-top: 30px;
+}
+
+table {
+    thead {
+        text-align: $text-align_center;
+    }
+    
+    .head-style {
+        background-color: $primary-color;
+        color: white;
+        position: sticky;
+        top: 0;
+    }
+
+    th {
+        @extend %seccondary-color;
+        font-family: $shared-font;
+        color: #191970;
+    }
+}
+
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.fixed.hidden {
+    display: none;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+input:focus, input:active {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.fa-bars:hover {
+    color: $primary-color;
+}
+
+.fa-address-book-o:hover {
+    color: $primary-color;
+}

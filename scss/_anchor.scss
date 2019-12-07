@@ -1,0 +1,36 @@
+.anchor-top {
+    background-color:$primary-color;
+    height: 30px;
+    border: 1px solid $primary-color;
+    border-radius: 10px 10px 0px 0px;
+    text-align: $text-align_center;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.anchor-top:hover {
+    background-color: $primary-color;
+    height: 50px;
+    border: 1px solid $primary-color;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 10px;
+    text-align: $text-align_center;
+    font-size: 18px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    user-select: none;
+    -moz-user-select: none;
+
+}
+
+.anchor-color {
+    color: white;
+}
+
+.anchor-color:hover {
+    color: white;
+}
