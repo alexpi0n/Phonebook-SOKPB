@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>СОКПБ.Справочник IP-телефонов</title>
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -10,97 +11,116 @@
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/popper.min.js"></script>
-    
+
 </head>
 
 <body>
 
-<a id="top"></a>
+    <a id="top"></a>
 
-<header class="style">
-    <div class="container">
-        <div class="row search justify-content-center">
-            <div class="col-12 shadow p-3 mb-5 bg-white rounded">
+    <header class="style">
+        <div class="container">
+            <div class="row search justify-content-center">
+                <div class="col-12 shadow p-3 mb-5 bg-white rounded">
 
-                <h2><a class="title-color no-underline" href="index.html" data-tooltip="tooltip" data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png" width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник IP-телефонов</a></h2>
+                    <h2><a class="title-color no-underline" href="index.html" data-tooltip="tooltip"
+                            data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png"
+                                width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник
+                            IP-телефонов</a></h2>
 
-                <div class="input-group">
-                    <input type="search" class="form-control border border-dark" id="inputFltr" placeholder="Поиск по ФИО / Должности">
-                    <div class="input-group-append">
-                        
-                        <button type="button" class="btn btn-primary border border-dark" id="FindBtn">
+                    <div class="input-group">
+                        <input type="search" class="form-control border border-dark" id="inputFltr"
+                            placeholder="Поиск по ФИО / Должности">
+                        <div class="input-group-append">
+
+                            <button type="button" class="btn btn-primary border border-dark" id="FindBtn">
                                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-                        </button>
-                            <a class="btn btn-color border border-dark border-right-0" href="pb.docx" role="button" target="_blank" data-tooltip="tooltip" data-placement="top" title="Открыть или скачать старый телефонный справочник">
+                            </button>
+                            <a class="btn btn-primary border border-dark border-right-0" href="pb.docx" role="button"
+                                target="_blank" data-tooltip="tooltip" data-placement="top"
+                                title="Открыть или скачать старый телефонный справочник">
                                 <i class="fa fa-address-book-o fa-lg" aria-hidden="true"></i>
                             </a>
-                        
-                        <button type="button" class="btn btn-color border border-dark rounded-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-tooltip="tooltip" data-placement="top" title="Список подразделений. Выберете нужное для перехода">
+
+                            <button type="button" class="btn btn-primary border border-dark rounded-right dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-tooltip="tooltip"
+                                data-placement="top" title="Список подразделений. Выберете нужное для перехода">
                                 <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
-                        </button>
+                            </button>
                             <div class="dropdown-menu shadow p-1 rounded">
                                 <div class="row justify-content-center sd-input-group">
                                     <div class="input-group-append p-1 mt-n1 sd-input">
-                                        <input type="search" class="form-control rounded border border-dark" id="inputPodrFltr" placeholder="Поиск по подразделению">
+                                        <input type="search" class="form-control rounded border border-dark"
+                                            id="inputPodrFltr" placeholder="Поиск по подразделению">
                                     </div>
                                 </div>
                                 <table class="table">
-                                    <tbody id="podr_body">
+                                    <tbody>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a1">Структурное подразделение #1</a></td>
+                                            <td><a class="sd-link no-underline" href="#a1">Структурное подразделение
+                                                    #1</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a2">Структурное подразделение #2</a></td>
+                                            <td><a class="sd-link no-underline" href="#a2">Структурное подразделение
+                                                    #2</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a3">Структурное подразделение #3</a></td>
+                                            <td><a class="sd-link no-underline" href="#a3">Структурное подразделение
+                                                    #3</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a4">Структурное подразделение #4</a></td>
+                                            <td><a class="sd-link no-underline" href="#a4">Структурное подразделение
+                                                    #4</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a5">Структурное подразделение #5</a></td>
+                                            <td><a class="sd-link no-underline" href="#a5">Структурное подразделение
+                                                    #5</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a6">Структурное подразделение #6</a></td>
+                                            <td><a class="sd-link no-underline" href="#a6">Структурное подразделение
+                                                    #6</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a7">Структурное подразделение #7</a></td>
+                                            <td><a class="sd-link no-underline" href="#a7">Структурное подразделение
+                                                    #7</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a8">Структурное подразделение #8</a></td>
+                                            <td><a class="sd-link no-underline" href="#a8">Структурное подразделение
+                                                    #8</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a9">Структурное подразделение #9</a></td>
+                                            <td><a class="sd-link no-underline" href="#a9">Структурное подразделение
+                                                    #9</a></td>
                                         </tr>
                                         <tr class="dd-line">
-                                            <td><a class="sd-link no-underline" href="#a10">Структурное подразделение #10</a></td>
+                                            <td><a class="sd-link no-underline" href="#a10">Структурное подразделение
+                                                    #10</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<main class="container shadow p-3 mb-5 bg-white rounded">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-bordered table-hover style">
-                <thead class="style text-center">
-                <tr>
-                    <th class="align-middle" width="37%">Ф.И.О</th>
-                    <th class="align-middle" width="40%">Должность</th>
-                    <th class="align-middle" width="10%">Внутр.тел</th>
-                    <th class="align-middle" width="13%">Гор.тел</th>
-                </tr>
-                </thead>
-                <tbody>
+    <main class="container shadow p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <th class="style" colspan="4"><a id="a1"></a>Структурное подразделение #1</th>
+                            <th class="head-style" width="37%">Ф.И.О</th>
+                            <th class="head-style" width="40%">Должность</th>
+                            <th class="head-style" width="10%">Внутр.тел</th>
+                            <th class="head-style" width="13%">Гор.тел</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="4"><a id="a1"></a>Структурное подразделение #1</th>
                         </tr>
                         <tr>
                             <td>Lorem ipsum dolor.</td>
@@ -126,40 +146,11 @@
                             <td>3-451</td>
                             <td>233-54-21</td>
                         </tr>
-                        
+
                         <tr>
-                            <th class="style" colspan="4"><a id="a2"></a>Структурное подразделение #2</th>
+                            <th colspan="4"><a id="a2"></a>Структурное подразделение #2</th>
                         </tr>
-                        
-                        <tr>
-                            <td>Lorem ipsum dolor.</td>
-                            <td>lorem</td>
-                            <td>5-385</td>
-                            <td>232-61-15</td>
-                        </tr>
-                        <tr>
-                            <td>Lorem ipsum dolor.</td>
-                            <td>lorem</td>
-                            <td>5-187</td>
-                            <td>232-61-15</td>
-                        </tr>
-                        <tr>
-                            <td>Lorem ipsum dolor.</td>
-                            <td>lorem</td>
-                            <td>3-172</td>
-                            <td>235-66-25</td>
-                        </tr>
-                        <tr>
-                            <td>Lorem ipsum dolor.</td>
-                            <td>lorem</td>
-                            <td>3-451</td>
-                            <td>233-54-21</td>
-                        </tr>
-                        
-                        <tr>
-                            <th class="style" colspan="4"><a id="a3"></a>Структурное подразделение #3</th>
-                        </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -184,10 +175,11 @@
                             <td>3-451</td>
                             <td>233-54-21</td>
                         </tr>
+
                         <tr>
-                            <th class="style" colspan="4"><a id="a4"></a>Структурное подразделение #4</th>
+                            <th colspan="4"><a id="a3"></a>Структурное подразделение #3</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -213,9 +205,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a5"></a>Структурное подразделение #5</th>
+                            <th colspan="4"><a id="a4"></a>Структурное подразделение #4</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -241,9 +233,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a6"></a>Структурное подразделение #6</th>
+                            <th colspan="4"><a id="a5"></a>Структурное подразделение #5</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -269,9 +261,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a7"></a>Структурное подразделение #7</th>
+                            <th colspan="4"><a id="a6"></a>Структурное подразделение #6</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -297,9 +289,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a8"></a>Структурное подразделение #8</th>
+                            <th colspan="4"><a id="a7"></a>Структурное подразделение #7</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -325,9 +317,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a9"></a>Структурное подразделение #9</th>
+                            <th colspan="4"><a id="a8"></a>Структурное подразделение #8</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -353,9 +345,9 @@
                             <td>233-54-21</td>
                         </tr>
                         <tr>
-                            <th class="style" colspan="4"><a id="a10"></a>Структурное подразделение #10</th>
+                            <th colspan="4"><a id="a9"></a>Структурное подразделение #9</th>
                         </tr>
-                        
+
                         <tr>
                             <td>Lorem ipsum dolor.</td>
                             <td>lorem</td>
@@ -380,56 +372,91 @@
                             <td>3-451</td>
                             <td>233-54-21</td>
                         </tr>
-                </tbody>
-            </table>
+                        <tr>
+                            <th colspan="4"><a id="a10"></a>Структурное подразделение #10</th>
+                        </tr>
+
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-385</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>5-187</td>
+                            <td>232-61-15</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-172</td>
+                            <td>235-66-25</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor.</td>
+                            <td>lorem</td>
+                            <td>3-451</td>
+                            <td>233-54-21</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<anchor class="container fixed hidden">
-    <div class="row justify-content-center">
-        <div class="col-3 anchor-top">
-            <a class="anchor-color no-underline" href="#top">В начало страницы</a>
+    <anchor class="container fixed hidden">
+        <div class="row justify-content-center">
+            <div class="col-3 anchor-top">
+                <a class="anchor-color no-underline" href="#top">В начало страницы</a>
+            </div>
         </div>
-    </div>
-</anchor>
+    </anchor>
 
-<script>
-    $("body").on('click', '[href*="#top"]', function(e){
-        var fixed_offset = 100;
-        $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
-        e.preventDefault();
-    });
-</script>
-<script>
-    $("body").on('click', '[href*="#a1"], [href*="#a2"], [href*="#a3"], [href*="#a4"], [href*="#a5"],[href*="#a6"], [href*="#a7"], [href*="#a8"], [href*="#a9"], [href*="#a10"]', function (e){
-        var fixed_offset = 5;
-        $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
-        e.preventDefault();
-    });
-</script>
-<script>
-    $('[data-tooltip="tooltip"]').tooltip();
-</script>
-<script>
-    var $win = $(window),
-        $fixed = $(".fixed"),
-        limit = 300;
+    <script>
+        $("body").on('click', '[href*="#top"]', function (e) {
+            var fixed_offset = 100;
+            $('html,body').stop().animate({
+                scrollTop: $(this.hash).offset().top - fixed_offset
+            }, 1000);
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        $("body").on('click',
+            '[href*="#a1"], [href*="#a2"], [href*="#a3"], [href*="#a4"], [href*="#a5"],[href*="#a6"], [href*="#a7"], [href*="#a8"], [href*="#a9"], [href*="#a10"]',
+            function (e) {
+                var fixed_offset = 5;
+                $('html,body').stop().animate({
+                    scrollTop: $(this.hash).offset().top - fixed_offset
+                }, 1000);
+                e.preventDefault();
+            });
+    </script>
+    <script>
+        $('[data-tooltip="tooltip"]').tooltip();
+    </script>
+    <script>
+        var $win = $(window),
+            $fixed = $(".fixed"),
+            limit = 300;
 
-    function tgl (state) {
-        $fixed.toggleClass("hidden", state);
-    }
-
-    $win.on("scroll", function () {
-        var top = $win.scrollTop();
-
-        if (top < limit) {
-            tgl(true);
-        } else {
-            tgl(false);
+        function tgl(state) {
+            $fixed.toggleClass("hidden", state);
         }
-    });
-</script>
+
+        $win.on("scroll", function () {
+            var top = $win.scrollTop();
+
+            if (top < limit) {
+                tgl(true);
+            } else {
+                tgl(false);
+            }
+        });
+    </script>
 
 </body>
+
 </html>
