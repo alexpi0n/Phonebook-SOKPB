@@ -24,7 +24,7 @@
                 <div class="col-12 shadow p-3 mb-5 bg-white rounded">
 
                     <h2><a class="title-color no-underline" href="index.html" data-tooltip="tooltip"
-                            data-placement="left" title="Обновить страницу и сбросить поиск"><img src="img/logo2.png"
+                            data-placement="left" title="Обновить страницу"><img src="img/logo2.png"
                                 width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник
                             IP-телефонов</a></h2>
 
@@ -33,7 +33,8 @@
                             placeholder="Поиск по ФИО / Должности">
                         <div class="input-group-append">
 
-                            <button type="button" class="btn btn-primary border border-dark" id="FindBtn">
+                            <button type="button" class="btn btn-primary border border-dark" id="FindBtn" data-tooltip="tooltip" data-placement="top"
+                            title="Найти">
                                 <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                             </button>
                             <a class="btn btn-primary border border-dark border-right-0" href="pb.docx" role="button"
@@ -54,7 +55,7 @@
                                             id="inputPodrFltr" placeholder="Поиск по подразделению">
                                     </div>
                                 </div>
-                                <table class="table">
+                                <table id="sd_id" class="table">
                                     <tbody>
                                         <tr class="dd-line">
                                             <td><a class="sd-link no-underline" href="#a1">Структурное подразделение
@@ -424,15 +425,18 @@
         });
     </script>
     <script>
-        $("body").on('click',
-            '[href*="#a1"], [href*="#a2"], [href*="#a3"], [href*="#a4"], [href*="#a5"],[href*="#a6"], [href*="#a7"], [href*="#a8"], [href*="#a9"], [href*="#a10"]',
-            function (e) {
-                var fixed_offset = 5;
-                $('html,body').stop().animate({
-                    scrollTop: $(this.hash).offset().top - fixed_offset
-                }, 1000);
-                e.preventDefault();
-            });
+        $("#sd_id .sd-link").on('click', function (e) { // По click, вызываем callback функцию с событием
+            var fixed_offset = 65;
+            $('html,body').stop().animate({
+                scrollTop: $(e.target.hash).offset().top - fixed_offset
+                // e.target.hash - здесь обращаемся к объекту event,
+                // в нем обращаемся к текущему элементу (к ссылке)
+                // и у ссылки забираем значение атрибута href
+                // далее передаем это значение функцию анимации
+                // и функция прокрутит страницу до нужного раздела.
+            }, 1000);
+            e.preventDefault();
+        });
     </script>
     <script>
         $('[data-tooltip="tooltip"]').tooltip();
