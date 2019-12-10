@@ -10,14 +10,14 @@ $text-align_center: center;
 }
 
 body {
-    background-image: url(../img/snow.png);
+    background-image: url(../source/img/snow.png);
     font-family: $shared-font;
 }
 
 header.style {
     margin: 0 auto;
     height: 190px;
-    background-image: url(../img/header-img.png);
+    background-image: url(../source/img/header-img.png);
     background-color: rgba(0, 0, 0, 0);
     background-repeat: no-repeat;
     background-position: center;

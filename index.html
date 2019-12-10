@@ -5,26 +5,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>СОКПБ.Справочник IP-телефонов</title>
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/popper.min.js"></script>
-
+    
 </head>
 
 <body>
 
     <a id="top"></a>
 
-    <header class="style">
+    <header class="style"z>
         <div class="container">
             <div class="row search justify-content-center">
                 <div class="col-12 shadow p-3 mb-5 bg-white rounded">
 
                     <h2><a class="title-color no-underline" href="index.html" data-tooltip="tooltip"
-                            data-placement="left" title="Обновить страницу"><img src="img/logo2.png"
+                            data-placement="left" title="Обновить страницу"><img src="source/img/logo2.png"
                                 width="37" height="37" class="d-inline-block align-top">&nbspГБУЗ СО "СОКПБ" Справочник
                             IP-телефонов</a></h2>
 
@@ -415,52 +413,14 @@
         </div>
     </anchor>
 
-    <script>
-        $("body").on('click', '[href*="#top"]', function (e) {
-            var fixed_offset = 100;
-            $('html,body').stop().animate({
-                scrollTop: $(this.hash).offset().top - fixed_offset
-            }, 1000);
-            e.preventDefault();
-        });
-    </script>
-    <script>
-        $("#sd_id .sd-link").on('click', function (e) { // По click, вызываем callback функцию с событием
-            var fixed_offset = 65;
-            $('html,body').stop().animate({
-                scrollTop: $(e.target.hash).offset().top - fixed_offset
-                // e.target.hash - здесь обращаемся к объекту event,
-                // в нем обращаемся к текущему элементу (к ссылке)
-                // и у ссылки забираем значение атрибута href
-                // далее передаем это значение функцию анимации
-                // и функция прокрутит страницу до нужного раздела.
-            }, 1000);
-            e.preventDefault();
-        });
-    </script>
-    <script>
-        $('[data-tooltip="tooltip"]').tooltip();
-    </script>
-    <script>
-        var $win = $(window),
-            $fixed = $(".fixed"),
-            limit = 300;
+    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <script src="lib/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/js/popper.min.js"></script>
 
-        function tgl(state) {
-            $fixed.toggleClass("hidden", state);
-        }
-
-        $win.on("scroll", function () {
-            var top = $win.scrollTop();
-
-            if (top < limit) {
-                tgl(true);
-            } else {
-                tgl(false);
-            }
-        });
-    </script>
-
+    <script src="source/js/anchor.js"></script>
+    <script src="source/js/subdivision-slide.js"></script>
+    <script src="source/js/tooltip.js"></script>
+        
 </body>
 
 </html>

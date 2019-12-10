@@ -1,8 +1,6 @@
-js/*.min.js
-js/jquery-3.4.1.js
-js/popper.min.js
-js/popper.js
-js/bootstrap.bundle.min.js
+lib/js/*.min.js
+lib/js/jquery-3.4.1.js
+lib/js/popper.js
 .psd
-css/*.min.css
+lib/css/*.min.css
 pd.docx

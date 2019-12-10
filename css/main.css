@@ -7,9 +7,7 @@
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  -webkit-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -moz-user-select: none;
 }
 
@@ -24,9 +22,7 @@
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  -webkit-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -moz-user-select: none;
 }
 
@@ -47,7 +43,6 @@
 
 .sd-input-group {
   background-color: whitesmoke;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -70,14 +65,14 @@ tr.dd-line:hover, table th {
 }
 
 body {
-  background-image: url(../img/snow.png);
+  background-image: url(../source/img/snow.png);
   font-family: Verdana, sans-serif;
 }
 
 header.style {
   margin: 0 auto;
   height: 190px;
-  background-image: url(../img/header-img.png);
+  background-image: url(../source/img/header-img.png);
   background-color: rgba(0, 0, 0, 0);
   background-repeat: no-repeat;
   background-position: center;
@@ -105,7 +100,6 @@ table thead {
 table .head-style {
   background-color: #007bff;
   color: white;
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -126,14 +120,12 @@ table th {
 }
 
 .btn:focus, .btn:active {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   outline: 0px !important;
 }
 
 input:focus, input:active {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   outline: 0px !important;
 }
 
@@ -144,5 +136,3 @@ input:focus, input:active {
 .fa-address-book-o:hover {
   color: #007bff;
 }
-
-/*# sourceMappingURL=main.css.map */
